@@ -1,0 +1,10 @@
+2.SELECT orders.orderID,orders.OrderDate,Customers.customerName,customers.city,customers.address,customers.postalcode,shippers.shipperName,products.productName,orderdetails.quantity FROM ((((Customers INNER JOIN orders ON  customers.customerID=orders.customerID)INNER JOIN Shippers ON orders.ShipperID=shippers.shipperID)INNER JOIN orderdetails ON Orderdetails.orderid=orders.orderid)INNER JOIN products ON products.productid=orderdetails.productid);
+
+
+3.SELECT products.productname,shippers.Shippername FROM (((products INNER JOIN orderdetails ON products.productid=orderdetails.productid) INNER JOIN orders ON orders.orderid=Orderdetails.orderid)INNER JOIN Shippers ON orders.ShipperID=shippers.shipperID);
+
+4.SELECT shippers.Shippername, COUNT (orders.orderid) AS totalorders FROM orders INNER JOIN shippers ON orders.shipperID=shippers.shipperID GROUP BY shippers.shippername; 
+
+5.SELECT COUNT(customerID)FROM Customers WHERE CustomerName NOT LIKE '%son%';
+
+6.SELECT SUM (orderdetails.quantity*products.price) AS totalSales FROM ((orders INNER JOIN orderdetails ON orders.orderID=orderdetails.orderID) INNER JOIN products ON orderdetails.productid=products.productID) WHERE orderdate BETWEEN #01/01/1997# AND #12/31/1997#;
